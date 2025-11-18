@@ -17,8 +17,16 @@ size_t WordCount::hash(std::string word) const {
 }
 
 int WordCount::getTotalWords() const {
-    // STUB
-    return -1;
+    std::vector<int> counts;
+	for (size_t i = 0; i < CAPACITY; i++){
+		for (size_t i = 0; j < table[i].size(); j++){
+			counts.push_back(table[i][j].second);
+		}  
+	}
+    int todal = 0;
+	for (size_t k = 0; k < counts.size(); k++){
+		total += counts[k];
+	}
 }
 
 int WordCount::getNumUniqueWords() const {
