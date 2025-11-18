@@ -47,7 +47,7 @@ int main() {
   ASSERT_EQUALS(0, wc.getTotalWords());
   ASSERT_EQUALS(0, wc.getNumUniqueWords());
 
-  // Invalid word: no letters -> should return -1 and not change anything
+  // Invalid word: no letters -> should return -1
   ASSERT_EQUALS(-1, wc.decrWordCount("1234!!"));
   ASSERT_EQUALS(0, wc.getTotalWords());
   ASSERT_EQUALS(0, wc.getNumUniqueWords());
