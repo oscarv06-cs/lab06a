@@ -1,7 +1,7 @@
 // WordCount.cpp
 
 #include "WordCount.h"
-
+#include <cctype> //include for iswordchar func
 using namespace std;
 
 // Default constructor
@@ -17,26 +17,26 @@ size_t WordCount::hash(std::string word) const {
 }
 
 int WordCount::getTotalWords() const {
-    std::vector<int> counts;
+    int total = 0;
 	for (size_t i = 0; i < CAPACITY; i++){
-		for (size_t i = 0; j < table[i].size(); j++){
-			counts.push_back(table[i][j].second);
+		for (size_t j = 0; j < table[i].size(); j++){
+			total += table[i][j].second;
 		}  
 	}
-    int todal = 0;
-	for (size_t k = 0; k < counts.size(); k++){
-		total += counts[k];
-	}
+	return total;
 }
 
 int WordCount::getNumUniqueWords() const {
-    // STUB
-    return -1;
+    int total = 0;
+	for (size_t i = 0; i < CAPACITY; i++){
+		total += table[i].size();  
+	}
+	return total;
 }
 
 int WordCount::getWordCount(std::string word) const {
-    // STUB
-    return -1;
+    std::string validWord = makeValidWord(word); //making word valid for the test cases
+
 }
 
 int WordCount::incrWordCount(std::string word) {
@@ -50,8 +50,7 @@ int WordCount::decrWordCount(std::string word) {
 }
 
 bool WordCount::isWordChar(char c) {
-    // STUB
-    return false;
+    return isalpha(c);
 }
 
 std::string WordCount::makeValidWord(std::string word) {
