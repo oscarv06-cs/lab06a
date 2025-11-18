@@ -25,7 +25,7 @@ int main() {
     ASSERT_EQUALS(string("world"), wc.makeValidWord("123world456"));
     ASSERT_EQUALS(string("test"), wc.makeValidWord("!!TeSt!!"));
 
-    // allow internal apostrophe and dash
+    // allow internal apostrophe/dash
     ASSERT_EQUALS(string("can't"), wc.makeValidWord("--CAN'T--"));
     ASSERT_EQUALS(string("re-entry"), wc.makeValidWord("++Re-EnTrY++"));
 
@@ -33,7 +33,7 @@ int main() {
     ASSERT_EQUALS(string(""), wc.makeValidWord("----"));
     ASSERT_EQUALS(string(""), wc.makeValidWord(""));
 
-    cout << "All tests passed in lab06test01!" << endl;
+    cout << "All testss passed in lab06test01" << endl;
 
     return 0;
 }

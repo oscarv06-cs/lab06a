@@ -32,7 +32,7 @@ int main() {
   ASSERT_EQUALS(2, wc.getNumUniqueWords());
 
   // makeValidWord integration with punctuation
-  ASSERT_EQUALS(1, wc.incrWordCount("!!hello!!"));
+  ASSERT_EQUALS(3, wc.incrWordCount("!!hello!!"));
   ASSERT_EQUALS(3, wc.getWordCount("hello"));
   ASSERT_EQUALS(4, wc.getTotalWords());
   ASSERT_EQUALS(2, wc.getNumUniqueWords());
@@ -42,7 +42,7 @@ int main() {
   ASSERT_EQUALS(4, wc.getTotalWords());
   ASSERT_EQUALS(2, wc.getNumUniqueWords());
 
-  cout << "All tests passed in lab06Test02!" << endl;
+  cout << "All tests passed in lab06Test02" << endl;
 
   return 0;
 }
