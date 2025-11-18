@@ -36,17 +36,59 @@ int WordCount::getNumUniqueWords() const {
 
 int WordCount::getWordCount(std::string word) const {
     std::string validWord = makeValidWord(word); //making word valid for the test cases
+	if (validWord == ""){
+		return 0; 
+	}
+	size_t index = hash(validWord);
+	const std::vector<std::pair<std::string, int>> &bucket = table[index];
 
+	for (size_t i = 0; i < bucket.size(); i++){
+		if (bucket[i].first == validWord){
+			return bucket[i].second; //return it once its found
+		}
+	}
+	return 0; 
 }
 
 int WordCount::incrWordCount(std::string word) {
-    // STUB
-    return -1;
+    std::string validWord = makeValidWord(word); //making word valid for the test cases
+	if (validWord == ""){
+		return 0; 
+	}
+
+	size_t index = hash(validWord);
+	std::vector<std::pair<std::string, int>> &bucket = table[index];
+
+    for (size_t i = 0; i < bucket.size(); i++){
+		if (bucket[i].first == validWord){
+			bucket[i].second++;
+			return bucket[i].second; //return it once its found
+		}
+	}
+	bucket.push_back(std::make_pair(validWord, 1));
+	return 1; 
 }
 
 int WordCount::decrWordCount(std::string word) {
-    // STUB
-    return -2;
+        std::string validWord = makeValidWord(word); //making word valid for the test cases
+	if (validWord == ""){
+		return -1; 
+	}
+
+	size_t index = hash(validWord);
+	std::vector<std::pair<std::string, int>> &bucket = table[index];
+
+    for (size_t i = 0; i < bucket.size(); i++){
+		if (bucket[i].first == validWord){
+			if (bucket[i].second > 1){
+				bucket[i].second--;
+				return bucket[i].second; //return it once its found
+			}
+			bucket.erase(bucket.begin() + i);
+			return 0;
+		}
+	}
+	return -1; // if the word was never found 
 }
 
 bool WordCount::isWordChar(char c) {
@@ -54,6 +96,17 @@ bool WordCount::isWordChar(char c) {
 }
 
 std::string WordCount::makeValidWord(std::string word) {
-    // STUB
-    return "";
+    std::string output; 
+	for (char c : word){
+		if (isWordChar(c)){
+			output += tolower(c);
+		}
+		else if (c == '-'){
+			output += c;
+		}
+	}
+	if (output == ""){
+		return "";
+	}
+    return output;
 }
