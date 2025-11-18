@@ -52,7 +52,5 @@ int main() {
   ASSERT_EQUALS(0, wc.getTotalWords());
   ASSERT_EQUALS(0, wc.getNumUniqueWords());
 
-  cout << "All tests passed in lab06Test03!" << endl;
-
   return 0;
 }

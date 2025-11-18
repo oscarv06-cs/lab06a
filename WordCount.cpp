@@ -101,12 +101,21 @@ std::string WordCount::makeValidWord(std::string word) {
 		if (isWordChar(c)){
 			output += tolower(c);
 		}
-		else if (c == '-'){
+		else if (c == '\'' || c == '-'){
 			output += c;
 		}
 	}
 	if (output == ""){
 		return "";
 	}
+
+	while (!output.empty() && (output.front() == '-' ||output.front() == '\'' )){//trim the - or ' at the beginning 
+		output.erase(output.begin());
+	}
+
+	while (!output.empty() && (output.back() == '-'||output.back() == '\'' )){ //trim the - or ' at the end
+		output.pop_back();
+	}
+	
     return output;
 }
