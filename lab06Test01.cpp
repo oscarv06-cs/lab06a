@@ -12,9 +12,9 @@ int main() {
     // isWordChar tests
     ASSERT_TRUE(wc.isWordChar('a'));
     ASSERT_TRUE(wc.isWordChar('Z'));
-    ASSERT_FALSE(wc.isWordChar('1'));
-    ASSERT_FALSE(wc.isWordChar('!'));
-    ASSERT_FALSE(wc.isWordChar('-')); 
+    ASSERT_TRUE(!(wc.isWordChar('1')));
+    ASSERT_TRUE(!(wc.isWordChar('!')));
+    ASSERT_TRUE(!(wc.isWordChar('-'))); 
 
     // makeValidWord basic cleanup
     ASSERT_EQUALS(string("hello"), wc.makeValidWord("Hello"));
@@ -33,7 +33,7 @@ int main() {
     ASSERT_EQUALS(string(""), wc.makeValidWord("----"));
     ASSERT_EQUALS(string(""), wc.makeValidWord(""));
 
-    cout << "All tests passed in lab06test01!" << endl
+    cout << "All tests passed in lab06test01!" << endl;
 
     return 0;
 }
